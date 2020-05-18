@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context=".CreateSaleActivity" >
+
+	<TextView android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:text="@string/lbl_sale_amount"
+		android:textColor="#ffffff"
+		android:layout_gravity="center"
+		android:gravity="center"
+		android:background="@drawable/btn_bg"
+		android:textSize="30sp"/>
+
+    <LinearLayout android:layout_width="match_parent"
+	    android:layout_height="0dip" android:layout_weight="1" android:orientation="vertical"
+	    android:paddingLeft="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_vertical_margin">
+	    <EditText android:id="@+id/sale_amt"
+	        android:layout_width="match_parent"
+	        android:layout_height="55dp"
+	        android:layout_gravity="center"
+	        android:background="@drawable/edit_text_bg_d"
+	        android:gravity="right|center|end"
+	        android:hint="@string/lbl_hint_amt"
+	        android:editable="false"
+	        android:singleLine="true"
+	        android:layout_marginTop="@dimen/activity_vertical_margin"
+	        android:layout_marginBottom="@dimen/activity_vertical_margin"
+	        android:textColor="#898989"
+	        android:textIsSelectable="false"
+            android:clickable="false"
+	        android:textSize="35sp" />
+
+	</LinearLayout>
+	<TextView android:id="@+id/action_next"
+   		android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/lbl_next"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:background="@drawable/btn_bg"
+        android:textSize="30sp"/>
+	<include layout="@layout/calculator"/>
+</LinearLayout>

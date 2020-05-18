@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#00BA6D"
+    tools:context=".TipActivity">
+    <LinearLayout android:layout_width="match_parent" android:paddingTop="@dimen/activity_horizontal_margin"
+	    android:layout_height="wrap_content" android:orientation="horizontal" android:paddingBottom="@dimen/activity_horizontal_margin"
+	    android:paddingLeft="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_vertical_margin">
+	    <TableLayout android:layout_width="match_parent" android:layout_height="match_parent"
+	   		android:stretchColumns="2" android:shrinkColumns="2">
+		    <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/lbl_total"
+			        android:textColor="#FFFFFF"
+			        android:layout_gravity="left|center"
+			        android:textSize="24sp" />
+			    <TextView android:id="@+id/total_sale_amt"
+			        android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content"
+		        	android:layout_gravity="left|center"
+		        	android:paddingLeft="@dimen/activity_horizontal_margin"
+			        android:text="@string/lbl_total_amt"
+		        	style="@style/autoscroll"
+			        android:textColor="#FFFFFF"
+			        android:textSize="24sp"
+			        android:textStyle="bold" />
+			    <TextView android:id="@+id/add_tip" android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="right|center"
+			        android:background="@drawable/add_tip_bg"
+			        android:text=""/>
+			</TableRow>
+		</TableLayout>
+	</LinearLayout>
+	<TableLayout android:layout_width="match_parent" android:layout_height="0dp"
+   		android:paddingLeft="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_vertical_margin"
+   		android:stretchColumns="*" android:shrinkColumns="*"
+		android:background="#ffffff" android:layout_weight="1">
+	    <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+			<TextView android:id="@+id/sign_clear" android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="right|center"
+		        android:textColor="#898989"
+	        	android:textSize="24sp"
+		        android:text="@string/lbl_clear"/>
+		</TableRow>
+		<TableRow android:layout_width="match_parent" android:layout_height="0dip" android:layout_weight="1">
+		    <com.ics.creditcardreader.helper.GestureOverlayView
+		        android:id="@+id/tip_sign"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:background="@android:color/transparent"
+		        android:gravity="center" />
+	    </TableRow>
+	    <TableRow android:layout_width="match_parent" android:layout_height="@dimen/activity_horizontal_margin">
+			<TextView android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:drawableTop="@drawable/line_dashed"/>
+		</TableRow>
+	</TableLayout>
+	<LinearLayout android:layout_width="match_parent" android:paddingTop="@dimen/activity_horizontal_margin"
+	    android:layout_height="wrap_content" android:orientation="horizontal" android:paddingBottom="@dimen/activity_horizontal_margin"
+	    android:paddingLeft="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_vertical_margin"  android:layout_gravity="bottom">
+		<TextView android:id="@+id/action_next"
+	   		android:layout_width="match_parent"
+	        android:layout_height="60dp"
+	        android:text="@string/lbl_next"
+	        android:textColor="#ffffff"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:background="@drawable/btn_bg"
+	        android:textSize="30sp"/>
+	</LinearLayout>
+</LinearLayout>

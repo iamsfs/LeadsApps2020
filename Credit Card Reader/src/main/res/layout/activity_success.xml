@@ -1,0 +1,144 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BA6D"
+    tools:context=".SuccessActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:contentDescription="@string/lbl_charge_success"
+            android:scaleType="fitCenter"
+            android:src="@drawable/success" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:text="@string/lbl_charge_success"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/cust_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:text="@string/lbl_demo_cust_name"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_horizontal_margin"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:gravity="right|center"
+                    android:text="@string/lbl_charged_amount"
+                    android:textColor="#ffffff"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/total_sale_amt"
+                    style="@style/autoscroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center"
+                    android:gravity="left|center"
+                    android:paddingLeft="5dp"
+                    android:text="@string/lbl_total_amt"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin">
+
+                <EditText
+                    android:id="@+id/cust_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:drawableLeft="@drawable/icon_phone"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/lbl_sign_up_phone"
+                    android:inputType="phone"
+                    android:maxLength="12"
+                    android:singleLine="true"
+                    android:textColor="#898989"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/cust_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:drawableLeft="@drawable/icon_mail"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/lbl_sign_up_email"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColor="#898989"
+                    android:textSize="24sp" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/action_next"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:background="@drawable/btn_bg"
+            android:gravity="center"
+            android:text="@string/lbl_done"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+</FrameLayout>

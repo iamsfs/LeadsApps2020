@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#00BA6D"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context=".HomeActivity" >
+    
+    <ImageView android:layout_width="match_parent"
+        android:layout_height="0dip" android:layout_weight="1"
+        android:contentDescription="@string/lbl_create_lead_img"
+        android:src="@drawable/create_lead_img" />
+	
+    <TextView android:id="@+id/sign_in"
+   		android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/lbl_sign_in"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:background="@drawable/btn_bg"
+        android:textSize="30sp"/>
+    <TextView android:id="@+id/sign_up"
+   		android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/lbl_sign_up"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:background="@drawable/btn_bg"
+        android:textSize="30sp"/>
+
+    <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:stretchColumns="*" android:shrinkColumns="*" android:layout_marginBottom="@dimen/activity_horizontal_margin">
+        <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:id="@+id/demo"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="@string/lbl_demo"
+                android:textColor="#ffffff"
+                android:layout_marginRight="@dimen/activity_horizontal_margin_s"
+                android:layout_gravity="left|center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:textSize="30sp"/>
+            <TextView android:id="@+id/pricing"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="@string/lbl_pricing"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin_s"
+                android:layout_gravity="right|center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:textSize="30sp"/>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
