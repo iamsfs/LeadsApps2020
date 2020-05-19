@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 android {
     signingConfigs {
-        2020 {
-            storeFile file('/Users/SFS-MAC/Documents/Github/Leads-Apps-Android/CCRA-2019/ccr.keystore')
-            storePassword 'demoapp'
-            keyAlias = 'android'
+        release {
+            storeFile file('../ccr.keystore')
+            storePassword 'android'
+            keyAlias = 'demoapp'
             keyPassword 'android'
         }
     }
@@ -22,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
         }
     }
     productFlavors {
