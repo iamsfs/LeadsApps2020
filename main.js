@@ -73,7 +73,6 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
           var source = results.source;
           var busninessName = results.BusinessName;
           var phone = results.Phone;
-          var isMobile = true;
           var url = "http://pospros.com";
           var utmSource = result.utmSource;
           var utmMedium = result.utmMedium;
@@ -81,6 +80,7 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
           var utmTerm = result.utmTerm;
           var utmContent = result.utmContent;
           var note = result.note;
+          var isMobile = result.isMobile;
           var baseurl = "https://crm.securedmerchantapp.com/api/leads";
 
           return Parse.Cloud.httpRequest({
