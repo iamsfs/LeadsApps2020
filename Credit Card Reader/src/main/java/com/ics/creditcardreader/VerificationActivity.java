@@ -164,6 +164,7 @@ public class VerificationActivity extends Activity {
         try {
             HashMap<String, Object> params = new HashMap<String, Object>();
             params.put("objectId", objectId);
+            params.put("app", "CCRA");
             //below function will trigger saveLeadToPospros function from cloud code
 
             ParseCloud.callFunctionInBackground("saveLeadToPospros",

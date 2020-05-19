@@ -57,11 +57,11 @@ Parse.Cloud.define("sendMailgun", function (request, response) {
 Parse.Cloud.define("saveLeadToPospros", function (request, response) {
   var Pospros = Parse.Object.extend("Pospros");
   var posporsQuery = new Parse.Query(Pospros);
+  posporsQuery.equalTo("app", request.params.app);
   posporsQuery.first({
     success: function (result) {
       var result = JSON.parse(JSON.stringify(result));
-
-      var CCRA = Parse.Object.extend("CCRA");
+      var CCRA = Parse.Object.extend(request.params.app);
       var query = new Parse.Query(CCRA);
       query.equalTo("objectId", request.params.objectId);
       query.first({
@@ -73,7 +73,7 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
           var source = results.source;
           var busninessName = results.BusinessName;
           var phone = results.Phone;
-          var url = "http://pospros.com";
+          var url = result.url;
           var utmSource = result.utmSource;
           var utmMedium = result.utmMedium;
           var utmCampaign = result.utmCampaign;
@@ -81,6 +81,7 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
           var utmContent = result.utmContent;
           var note = result.note;
           var isMobile = result.isMobile;
+          response.success(url);
           var baseurl = "https://crm.securedmerchantapp.com/api/leads";
 
           return Parse.Cloud.httpRequest({
