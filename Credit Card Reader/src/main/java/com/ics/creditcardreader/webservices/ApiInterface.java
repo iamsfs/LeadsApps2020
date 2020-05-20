@@ -27,7 +27,6 @@ public interface ApiInterface {
                                      @Part MultipartBody.Part achPdf);
 
 
-
     @FormUrlEncoded
     @POST(POSPROS)
     Call<ResponseBody> pospros(@Field("name") String name,
@@ -41,5 +40,6 @@ public interface ApiInterface {
                                @Field("utmTerm") String utmTerm,
                                @Field("utmContent") String utmContent,
                                @Field("note") String note,
-                               @Field("isMobile") Boolean isMobile);
+                               @Field("isMobile") Boolean isMobile,
+                               @Field("email") String email);
 }

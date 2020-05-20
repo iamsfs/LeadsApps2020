@@ -74,11 +74,12 @@ public class IrsLeadsWebserviceImpl implements IrsLeadsWebservice {
         String utmContent = "CCRA2020";
         String note = "CCRA2020";
         Boolean isMobile = true;
+        String email = "";
 
         Retrofit retrofit = ApplicationClass.getMyApp().getRetrofitInstance();
         //creating our api
         ApiInterface api = retrofit.create(ApiInterface.class);
-        Call<ResponseBody> call = api.pospros(name, source, dba, phone, url, utmSource, utmMedium, utmCampaign, utmTerm, utmContent, note, isMobile);
+        Call<ResponseBody> call = api.pospros(name, source, dba, phone, url, utmSource, utmMedium, utmCampaign, utmTerm, utmContent, note, isMobile, email);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -92,20 +93,27 @@ public class IrsLeadsWebserviceImpl implements IrsLeadsWebservice {
         });
     }
 
-    public static void saveLeads(String name, String source, String businessName, String phone) {
-        String url = "http://pospros.com";
-        String utmSource = "CCRA2020";
-        String utmMedium = "CCRA2020";
-        String utmCampaign = "CCRA2020";
-        String utmTerm = "CCRA2020";
-        String utmContent = "CCRA2020";
-        String note = "CCRA2020";
+    public static void saveLeads(String name, String source, String businessName, String phone, String userEmail) {
+//        String url = "http://pospros.com";
+//        String utmSource = "CCRA2020";
+//        String utmMedium = "CCRA2020";
+//        String utmCampaign = "CCRA2020";
+//        String utmTerm = "CCRA2020";
+//        String utmContent = "CCRA2020";
+//        String note = "CCRA2020";
+        String url = "https://apps.apple.com/us/app/smartswipe-credit-card-reader/id615529232";
+        String utmSource = "-";
+        String utmMedium = "-";
+        String utmCampaign = "-";
+        String utmTerm = "-";
+        String utmContent = "-";
+        String note = "-";
         Boolean isMobile = true;
 
         Retrofit retrofit = ApplicationClass.getMyApp().getRetrofitInstance();
         //creating our api
         ApiInterface api = retrofit.create(ApiInterface.class);
-        Call<ResponseBody> call = api.pospros(name, source, businessName, phone, url, utmSource, utmMedium, utmCampaign, utmTerm, utmContent, note, isMobile);
+        Call<ResponseBody> call = api.pospros(name, source, businessName, phone, url, utmSource, utmMedium, utmCampaign, utmTerm, utmContent, note, isMobile, userEmail);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

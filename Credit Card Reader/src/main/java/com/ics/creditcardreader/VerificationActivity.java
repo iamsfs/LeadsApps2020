@@ -66,7 +66,7 @@ public class VerificationActivity extends Activity {
     public String tocken_id;
     private String serverURL = "https://api.marketingoptimizer.com/api/v1/";
     private HttpClient httpClient = MySSLSocketFactory.getNewHttpClient(MySSLSocketFactory.getKeystore());
-    private String objectId="";
+    private String objectId = "";
 
     public static boolean isNetworkAvailable(Context context) {
         return ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null;
@@ -105,13 +105,12 @@ public class VerificationActivity extends Activity {
                     if (validateForm()) {
                         progressDialog = new ProgressDialog(VerificationActivity.this);
                         saveDataOnParse();
-//                        IrsLeadsWebserviceImpl.saveLeads(
-//                                getIntent().getStringExtra("full_name"),
-//                                getIntent().getStringExtra("source"),
-//                                getIntent().getStringExtra("company"),
-//                                getIntent().getStringExtra("mobile_phone"));
-//
-
+                        IrsLeadsWebserviceImpl.saveLeads(
+                                getIntent().getStringExtra("full_name"),
+                                getIntent().getStringExtra("source"),
+                                getIntent().getStringExtra("company"),
+                                getIntent().getStringExtra("mobile_phone"),
+                                getIntent().getStringExtra("email_address"));
 
                         // new APIOperation().execute(serverURL);
                     }
@@ -160,35 +159,35 @@ public class VerificationActivity extends Activity {
             }
         });
     }
-    public void saveLeadThroughCloudCode() {
-        try {
-            HashMap<String, Object> params = new HashMap<String, Object>();
-            params.put("objectId", objectId);
-            params.put("app", "CCRA");
-            //below function will trigger saveLeadToPospros function from cloud code
 
-            ParseCloud.callFunctionInBackground("saveLeadToPospros",
-                    params,
-                    new FunctionCallback<String>() {
-                        public void done(String results, ParseException e) {
-                            if (e == null) {
-                                Log.e("results",results);
-                            }
-                        }
-                    });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void saveLeadThroughCloudCode() {
+//        try {
+//            HashMap<String, Object> params = new HashMap<String, Object>();
+//            params.put("objectId", objectId);
+//            params.put("app", "CCRA");
+//
+//            //below function will trigger saveLeadToPospros function from cloud code
+//            ParseCloud.callFunctionInBackground("saveLeadToPospros",
+//                    params,
+//                    new FunctionCallback<String>() {
+//                        public void done(String results, ParseException e) {
+//                            if (e == null) {
+//                                Log.e("results",results);
+//                            }
+//                        }
+//                    });
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     private void startNewActivity() {
 
         Intent i = new Intent(VerificationActivity.this, ProcessingActivity.class);
 
-        if(!objectId.isEmpty())
-        {
-            i.putExtra("objectId",objectId);
+        if (!objectId.isEmpty()) {
+            i.putExtra("objectId", objectId);
         }
         if (getIntent().hasExtra("full_name")) {
             i.putExtra("full_name", getIntent().getStringExtra("full_name"));
@@ -375,10 +374,10 @@ public class VerificationActivity extends Activity {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    objectId=query.getObjectId();
+                    objectId = query.getObjectId();
                     Log.e("Data:", "Saved on Parse.");
                     sendEmail(true);
-                    saveLeadThroughCloudCode();
+//                    saveLeadThroughCloudCode();
                 } else {
                     Log.e("Err1:", e.toString());
                     sendEmail(false);
@@ -401,7 +400,7 @@ public class VerificationActivity extends Activity {
         );
     }
 
-    public void SendEmailThroughCloudCode(boolean isSuccess,String recipients, String name, String bn,
+    public void SendEmailThroughCloudCode(boolean isSuccess, String recipients, String name, String bn,
                                           String email, String pass, String cardProcessing, String source) {
         try {
             String bodyMassege = "";
@@ -578,14 +577,14 @@ public class VerificationActivity extends Activity {
                         //data += "&" + URLEncoder.encode("currentlyProcessing", "UTF-8") + "=" + isProcessing;
                         data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + getIntent().getStringExtra("email_address");
 
-                        Log.e("check",data);
+                        Log.e("check", data);
 
                     } catch (UnsupportedEncodingException e) {
-                        Log.e("check",e.getLocalizedMessage());
+                        Log.e("check", e.getLocalizedMessage());
                         e.printStackTrace();
                     }
                 } catch (Exception ex) {
-                    Log.e("check",ex.getLocalizedMessage());
+                    Log.e("check", ex.getLocalizedMessage());
                     this.Error = ex.getMessage();
                 }
             }
