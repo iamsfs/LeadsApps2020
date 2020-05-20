@@ -101,7 +101,7 @@ public class IrsLeadsWebserviceImpl implements IrsLeadsWebservice {
 //        String utmTerm = "CCRA2020";
 //        String utmContent = "CCRA2020";
 //        String note = "CCRA2020";
-        String url = "https://apps.apple.com/us/app/smartswipe-credit-card-reader/id615529232";
+        String url = "https://play.google.com/store/apps/details?id=com.ics.creditcardreader";
         String utmSource = "-";
         String utmMedium = "-";
         String utmCampaign = "-";
