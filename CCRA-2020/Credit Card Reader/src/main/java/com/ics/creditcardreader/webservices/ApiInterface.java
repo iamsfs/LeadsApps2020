@@ -31,7 +31,7 @@ public interface ApiInterface {
     @POST(POSPROS)
     Call<ResponseBody> pospros(@Field("name") String name,
                                @Field("source") String source,
-                               @Field("dba") String dba,
+                               @Field("dba") String dba, //Business name
                                @Field("phone") String phone,
                                @Field("url") String url,
                                @Field("utmSource") String utmSource,
