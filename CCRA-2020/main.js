@@ -61,8 +61,8 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
   posporsQuery.first({
     success: function (result) {
       var result = JSON.parse(JSON.stringify(result));
-      var CCRA = Parse.Object.extend(request.params.app);
-      var query = new Parse.Query(CCRA);
+      var appName = Parse.Object.extend(request.params.app);
+      var query = new Parse.Query(appName);
       query.equalTo("objectId", request.params.objectId);
       query.first({
         success: function (results) {
@@ -72,7 +72,7 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
           var name = results.Name + " " + results.LastName;
           var source = results.source;
           var busninessName = results.BusinessName;
-          var email = result.Email;
+          var email = results.Email;
           var phone = results.Phone;
           var url = result.url;
           var utmSource = result.utmSource;
