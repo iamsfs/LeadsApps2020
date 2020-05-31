@@ -127,7 +127,7 @@ public class SignUpActivity extends Activity {
         action_call.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Uri uri = Uri.parse("tel:1-888-994-9610");
+                Uri uri = Uri.parse("tel:18003353303");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

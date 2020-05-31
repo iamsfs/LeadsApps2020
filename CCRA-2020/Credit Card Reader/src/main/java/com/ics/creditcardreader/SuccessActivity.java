@@ -55,7 +55,7 @@ public class SuccessActivity extends Activity {
                         .setView(getLayoutInflater().inflate(R.layout.success_popup, null))
                         .setNeutralButton(R.string.lbl_apply_phone, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                Uri uri = Uri.parse("tel:1-888-994-9610");
+                                Uri uri = Uri.parse("tel:18003353303");
                                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                                 startActivity(intent);
                             }

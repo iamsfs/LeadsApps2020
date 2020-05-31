@@ -72,7 +72,7 @@
     <string name="lbl_pricing">Pricing</string>
     <string name="lbl_call_us">Call Us</string>
     <string name="lbl_login_msg_1">If you need help logging in,</string>
-    <string name="lbl_login_msg_2">Please call&#160;<a href="tel:1-888-994-9610">1-888-994-9610</a></string>
+    <string name="lbl_login_msg_2">Please call&#160;<a href="tel:18003353303">1 (800) 335-3303</a></string>
 
     <string name="lbl_login">Login</string>
     <string name="lbl_account_login">Account Login</string>
@@ -182,7 +182,7 @@
     <string name="lbl_confirmation">Confirmation</string>
     <string name="lbl_confirm_done">You\'re Done!</string>
     <string name="lbl_confirm_done_msg">Application has been submitted.\nPlease allow 1&#8211;3 business days for approval</string>
-    <string name="lbl_confirm_done_footer">If you do not receive an email\nplease call <u><a href="tel:1-888-994-9610">1-888-994-9610</a></u></string>
+    <string name="lbl_confirm_done_footer">If you do not receive an email\nplease call <u><a href="tel:18003353303">1 (800) 335-3303</a></u></string>
 
     <string name="lbl_i_agree">I agree to the</string>
     <string name="lbl_terms_cond">Terms &amp; Conditions</string>
@@ -194,15 +194,15 @@
     <string name="lbl_verification_footer_1">Didn\'t receive the text message?</string>
     <string name="lbl_verification_footer_2"><u>Verify or change phone number</u></string>
     <string name="lbl_verification_footer_3">For further assistance, contact us here:</string>
-    <string name="lbl_verification_footer_4"><u><a href="tel:1-888-994-9610">1-888-994-9610</a></u></string>
+    <string name="lbl_verification_footer_4"><u><a href="tel:18003353303">1 (800) 335-3303</a></u></string>
     <string name="lbl_verification_footer_5"><u><a href="mailto:support@cjtechapps.com">support@cjtechapps.com</a></u></string>
 
     <string name="lbl_or">OR</string>
     <string name="lbl_thank_you">Thank you</string>
     <string name="lbl_thank_you_msg">Your Application has been submitted. A representative will follow up with you to complete the process.</string>
-    <string name="lbl_thank_you_footer"><u><a href="tel:1-888-994-9610">Call now for a quicker setup.</a></u></string>
+    <string name="lbl_thank_you_footer"><u><a href="tel:18003353303">Call now for a quicker setup.</a></u></string>
     <string name="lbl_call_now">Call Now for Quick Setup:</string>
-    <string name="lbl_quick_setup">Quick Setup:&#160;<u><a href="tel:1-888-994-9610">1-888-994-9610</a></u></string>
+    <string name="lbl_quick_setup">Quick Setup:&#160;<u><a href="tel:18003353303">1 (800) 335-3303</a></u></string>
     <string name="string_buisness_info">Business Info</string>
     <string name="string_do_you_have_a_federal_tax_id">Do you Have a Federal Tax ID?</string>
     <string name="string_next">Next</string>

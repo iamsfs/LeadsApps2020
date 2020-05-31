@@ -40,7 +40,7 @@ public class ThankYouActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent callIntent = new Intent(Intent.ACTION_VIEW);
-				callIntent.setData(Uri.parse("tel:+1-888-994-9610"));
+				callIntent.setData(Uri.parse("tel:18003353303"));
 				startActivity(callIntent);
 			}
 		});
