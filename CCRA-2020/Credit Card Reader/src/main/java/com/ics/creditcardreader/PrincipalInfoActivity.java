@@ -271,8 +271,7 @@ public class PrincipalInfoActivity extends AppCompatActivity {
 
         setFilters(mTxtState);
         setFilters(mTxtDLSTATE);
-       
-        //setSeeds();
+
     }
 
     private void startNewActivity() {
@@ -288,17 +287,7 @@ public class PrincipalInfoActivity extends AppCompatActivity {
         AccountInfoActivity.start(this, objectId, CCRA, mBusinessInfo, principalInfo, pricingObject);
     }
 
-    // TODO: 12/5/2019 Remove this
-    private void setSeeds() {
-        mTxtMM.setText("12");
-        mTxtYYY.setText("1992");
-        mTxtDD.setText("09");
-        mTxt000.setText("334");
-        mTxt00.setText("42");
-        mTxt0000.setText("4245");
-        mTxtDLSTATE.setText("LA ");
-       
-    }
+
     private boolean validateForm() {
 
         mAddress = mTxtAddress.getText().toString().trim();

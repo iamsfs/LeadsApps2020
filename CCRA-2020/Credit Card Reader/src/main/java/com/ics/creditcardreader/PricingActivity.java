@@ -303,34 +303,4 @@ public class PricingActivity extends Activity implements OnClickListener {
 
 
     }
-//    private void updateDataOnParse(){
-//        progressDialog = new ProgressDialog(this);
-//        progressDialog.setMessage("Please wait..");
-//        progressDialog.show();
-//
-//        final ParseObject AccountInfo = new ParseObject("AccountInfo");
-//        AccountInfo.put("sellType", mSellCustomersDropDown);
-//        AccountInfo.put("averageSell", mAverageSellCustomers);
-//        AccountInfo.put("estimatedCCSale", mCreditCardSales);
-//        AccountInfo.put("bankName", mBankName);
-//        AccountInfo.put("routingNumber", mBankRoutingNumber);
-//        AccountInfo.put("accountNumber", mBankAccountNumber);
-//
-//
-//
-//        ParseQuery<ParseObject> query = ParseQuery.getQuery("CCRA");
-//        query.getInBackground(objectId, new GetCallback<ParseObject>() {
-//            public void done(ParseObject entity, ParseException e) {
-//                if (e == null) {
-//                    entity.put("accountInfo", AccountInfo);
-//                    entity.saveInBackground();
-//                    progressDialog.dismiss();
-//                    startNewActivity();
-//                }
-//                else{
-//                    Toast.makeText(AccountInfoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//    }
 }

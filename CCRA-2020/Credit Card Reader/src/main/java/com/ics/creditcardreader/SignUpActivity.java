@@ -57,12 +57,9 @@ public class SignUpActivity extends Activity {
     private EditText sign_up_name, sign_up_last_name, sign_up_bus_name, sign_up_email, sign_up_phone, sign_up_password, sign_up_v_password;
     private String phoneNumber = "";
     String tocken_id = "";
-    private HttpClient httpClient = MySSLSocketFactory.getNewHttpClient(MySSLSocketFactory.getKeystore());
     private ProgressDialog progressDialog;
     String verificationCode = "1234";
 
-    private String source = "CCRA", card_processing = "No";
-    private String serverURL = "https://api.marketingoptimizer.com/api/v1/";
 
     public static boolean isNetworkAvailable(Context context) {
         return ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null;
@@ -107,16 +104,6 @@ public class SignUpActivity extends Activity {
     }
 
 
-    // TODO: 18/6/19 Remove before sharing
-    private void setSeeds() {
-        sign_up_name.setText("Snake");
-        sign_up_bus_name.setText("Snake bizz");
-        sign_up_email.setText("Snake@gmail.com");
-        sign_up_phone.setText("703-539-7183");
-        sign_up_password.setText("123456");
-        sign_up_v_password.setText("123456");
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -129,9 +116,7 @@ public class SignUpActivity extends Activity {
                 // WebServer Request URL
                 if (isNetworkAvailable(SignUpActivity.this)) {
                     if (validateForm()) {
-                        // Use AsyncTask execute Method To Prevent ANR Problem
                         SendSMSThroughTwilioCloudCode();
-                        //getTockenIdFromAggregateCRM();
                     }
                 } else {
                     ShowNotification.showErrorDialog(SignUpActivity.this, "Internet is not available.");
@@ -271,77 +256,6 @@ public class SignUpActivity extends Activity {
         return errorNotFound;
     }
 
-    // Class with extends AsyncTask class
-    private class SendSMSThroughAPI extends AsyncTask<String, Void, Void> {
-        private String Error = null;
-        String phoneNumber = sign_up_phone.getText().toString().replaceAll("[\\W]", "");
-        private String verificationCode = "1234";
-
-        protected void onPreExecute() {
-        }
-
-        // Call after onPreExecute method
-        protected Void doInBackground(String... urls) {
-
-            verificationCode = String.valueOf(new Random().nextInt(8999) + 1000);
-            String msgData = "";
-            try {
-                // Set Request parameter
-                msgData += "&" + URLEncoder.encode("phone", "UTF-8") + "=" + phoneNumber;
-                msgData += "&" + URLEncoder.encode("text", "UTF-8") + "=" + URLEncoder.encode(String.format("Here is your activation code. %s. Thank you for choosing %s App", verificationCode, getString(R.string.app_name)), "UTF-8");
-                msgData += "&" + URLEncoder.encode("token", "UTF-8") + "=raj12345";
-
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            HttpClient client = new DefaultHttpClient();
-            String response = "";
-            // Send data
-            try {
-                HttpGet httpget = new HttpGet(urls[0] + "?" + msgData);
-                ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                Log.d(TAG, "Message Request: " + urls[0] + "?" + msgData);
-                response = client.execute(httpget, responseHandler);
-                Log.d(TAG, "Message Response: " + response);
-            } catch (IOException ex) {
-                Error = ex.getMessage();
-            } catch (Exception ex) {
-                Error = ex.getMessage();
-            }
-            return null;
-        }
-
-        protected void onPostExecute(Void unused) {
-            // Close progress dialog
-            progressDialog.dismiss();
-            if (Error != null) {
-					/*new AlertDialog.Builder(SignUpActivity.this)
-						.setTitle(R.string.app_name)
-						.setMessage(Error)
-						.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int which) {}
-						}).show();*/
-                Log.d(TAG, "Error : " + Error);
-            }
-            Log.i("verificationCode:", this.verificationCode);
-            Intent i = new Intent(SignUpActivity.this, ProcessingActivity.class);
-            i.putExtra("source", "CCRA");
-            i.putExtra("company", SignUpActivity.this.sign_up_bus_name.getText().toString());
-            String[] arrayOfString = SignUpActivity.this.sign_up_name.getText().toString().split("\\s+");
-            i.putExtra("first_name", arrayOfString[0]);
-            if (arrayOfString.length >= 2) {
-                i.putExtra("last_name", arrayOfString[1]);
-            }
-            i.putExtra("full_name", SignUpActivity.this.sign_up_name.getText().toString().trim());
-            i.putExtra("mobile_phone", this.phoneNumber);
-            i.putExtra("home_phone", this.phoneNumber);
-            i.putExtra("email_address", SignUpActivity.this.sign_up_email.getText().toString());
-            i.putExtra("VERIFICATION_CODE", this.verificationCode);
-            i.putExtra("Tocken_ID", tocken_id);
-            startActivity(i);
-        }
-    }
-
     public void SendSMSThroughTwilioCloudCode() {
         progressDialog.setMessage("Please wait..");
         progressDialog.show();
@@ -392,188 +306,5 @@ public class SignUpActivity extends Activity {
                         }
                     }
                 });
-    }
-
-    public void getTockenIdFromAggregateCRM() {
-        class APIOperation extends AsyncTask<String, Void, Void> {
-            private String Error = null;
-
-            protected void onPreExecute() {
-                progressDialog.setTitle("Saving");
-                progressDialog.setMessage("Please wait..");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
-            }
-
-            // Call after onPreExecute method
-            protected Void doInBackground(String... urls) {
-                try {
-                    //getting tocken id from Aggregate crm
-                    Log.i("Get Url:", "https://app.marketingoptimizer.com/api/v1/login/jfkpresident/Johnk@420");
-                    HttpGet httpGet = new HttpGet("https://app.marketingoptimizer.com/api/v1/login/jfkpresident/Johnk@420");
-                    HttpResponse loginResponse = httpClient.execute(httpGet);
-                    BufferedReader br = new BufferedReader(
-                            new InputStreamReader(
-                                    (loginResponse.getEntity().getContent())
-                            )
-                    );
-                    StringBuilder content = new StringBuilder();
-                    String line2;
-                    while (null != (line2 = br.readLine())) {
-                        content.append(line2);
-                    }
-                    JSONObject jsonObject = new JSONObject(content.toString());
-                    JSONObject jsonObject2 = jsonObject.getJSONObject("data");
-
-                    Log.e("Tocken_ID_PA: ", jsonObject2.getString("id_token"));
-                    Log.e("response", jsonObject.toString());
-                    //Log.e("response", content.toString() );
-                    //  Log.i("access_token: ", jsonObject2.getString("access_token") );
-                    //  Log.i("token_type: ", jsonObject2.getString("token_type") );
-                    tocken_id = jsonObject2.getString("id_token");
-                    //end
-                } catch (IOException ex) {
-                    Error = ex.getMessage();
-                } catch (Exception ex) {
-                    Error = ex.getMessage();
-                }
-                return null;
-            }
-
-            protected void onPostExecute(Void unused) {
-                if (Error != null) {
-                    Log.i("Error:", Error);
-                }
-                //new APIOperationSend().execute(serverURL);
-                progressDialog.dismiss();
-                SendSMSThroughTwilioCloudCode();
-            }
-        }
-        new APIOperation().execute("");
-    }
-
-
-    //send Data
-    class APIOperationSend extends AsyncTask<String, Void, Void> {
-        private String Error = null;
-        JSONObject jsonParams = new JSONObject();
-        StringBuilder stringReader = new StringBuilder();
-        HttpPost httpPost;
-        String str;
-
-        protected void onPreExecute() {
-            try {
-                if (!source.equals("")) {
-                    Object localObject = new JSONObject();
-                    ((JSONObject) localObject).put("id", "67516");//
-                    ((JSONObject) localObject).put("value", source);
-                    ((JSONObject) localObject).put("name", "source");
-                    localObject = new JSONArray().put(localObject);
-                    this.jsonParams.put("fields", localObject);
-                    this.jsonParams.put("position", source);
-                }
-                this.jsonParams.put("company", SignUpActivity.this.sign_up_bus_name.getText().toString());
-                this.jsonParams.put("first_name", SignUpActivity.this.sign_up_name.getText().toString().split("\\s+")[0]);
-                if (SignUpActivity.this.sign_up_name.getText().toString().split("\\s+").length >= 2) {
-                    this.jsonParams.put("last_name", SignUpActivity.this.sign_up_name.getText().toString().split("\\s+")[1]);
-                }
-                this.jsonParams.put("mobile_phone", phoneNumber);
-                this.jsonParams.put("home_phone", phoneNumber);
-                this.jsonParams.put("business_phone", phoneNumber);
-                this.jsonParams.put("email_address", SignUpActivity.this.sign_up_email.getText().toString());
-            } catch (JSONException localJSONException) {
-                this.Error = localJSONException.getMessage();
-            }
-            Log.d("CCR - Verification", "Request: " + this.jsonParams.toString());
-        }
-
-        // Call after onPreExecute method
-        protected Void doInBackground(String... urls) {
-            try {
-                httpPost = new HttpPost(urls[0] + "contacts");
-                str = "Bearer " + tocken_id;
-                Log.e("TockenIdVA: ", str);
-
-                httpPost.addHeader("Authorization", str);
-                httpPost.setHeader("content-type", "application/json");
-                StringEntity se = new StringEntity(jsonParams.toString(), HTTP.UTF_8);
-                se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-                httpPost.setEntity(se);
-                HttpResponse response = httpClient.execute(httpPost);
-
-                // Get hold of the response entity
-                HttpEntity entity = response.getEntity();
-                if (entity != null) {
-                    // A Simple JSON Response Read
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()));
-                    String line = null;
-
-                    // Read Server Response
-                    while ((line = reader.readLine()) != null) {
-                        stringReader.append(line);
-                    }
-                    Log.d(TAG, "XML Response: " + stringReader.toString());
-                }
-            } catch (IOException ex) {
-                Error = ex.getMessage();
-            } catch (Exception ex) {
-                Error = ex.getMessage();
-            }
-            return null;
-        }
-
-        protected void onPostExecute(Void unused) {
-            saveDataOnParse();
-            String leadID = "0";
-            if (Error != null) {
-            	/*new AlertDialog.Builder(VerificationActivity.this)
-            		.setTitle(R.string.app_name)
-	                .setMessage(Error)
-	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-	                	public void onClick(DialogInterface dialog, int which) {}
-	                }).show();*/
-//				Log.d(TAG, "Output : "+Error);
-            } else {
-                JSONObject localObject = null;
-                try {
-                    localObject = new JSONObject(stringReader.toString());
-                    JSONObject localJSONObject = new JSONObject(localObject.getString("data"));
-                    Log.d("CCR - Verification", "Success: " + localObject.getString("success"));
-
-                    if (!localJSONObject.getString("id").equals("0")) {
-                    }
-                } catch (Exception ex) {
-                    Log.d("CCR - Verification", "Error : " + ex.getMessage());
-                }
-                Log.d("CCR - Verification", "Output : " + localObject);
-            }
-        }
-    }
-
-    public void saveDataOnParse() {
-        ParseObject query = new ParseObject("CCRA");
-        query.put("Name", SignUpActivity.this.sign_up_name.getText().toString());
-        query.put("BusinessName", SignUpActivity.this.sign_up_bus_name.getText().toString());
-        query.put("Email", SignUpActivity.this.sign_up_email.getText().toString());
-        query.put("Phone", phoneNumber);
-        query.put("Processing", card_processing);
-        query.put("source", source);
-
-        query.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(com.parse.ParseException e) {
-//				if(e== null){
-//					Log.e("Data:","Saved on Parse.");
-//					sendEmail();
-//				}else{
-//					Log.e("Err1:",e.toString());
-//					sendEmail();
-//				}
-                progressDialog.dismiss();
-                Intent i = new Intent(SignUpActivity.this, ThankYouActivity.class);
-                startActivity(i);
-
-            }
-        });
     }
 }

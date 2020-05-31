@@ -95,18 +95,6 @@ public class AccountInfoActivity extends AppCompatActivity {
         mSpinnerSell.setAdapter(ownerAdapter);
 
         setListeners();
-       // setSeed();
-
-    }
-
-    // TODO: 18/6/19 Remove before sharing
-    private void setSeed() {
-        mTxtAverageSales.setText("200");
-        mTxtMoSales.setText("600");
-        mTxBankName.setText("PNB");
-        mTxBankRoutingNumber.setText("42040044");
-        mTxBankAccountNumber.setText("OB11358181");
-
 
     }
 

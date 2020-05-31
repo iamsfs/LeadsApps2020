@@ -134,17 +134,6 @@ public class BuisnessInfoActivity extends AppCompatActivity {
         mTxtState.setFilters(newFilters);
     }
 
-    // TODO: 18/6/19 Remove before sharing
-    private void setSeed() {
-        mTxtStreetName.setText("SCO 51");
-        mTxtCity.setText("MOHALI");
-        mTxtState.setText("PUNJAB");
-        mTxtZipCode.setText("14030");
-        mTxtContent.setText("Clothing");
-
-
-    }
-
     private void setDefaults() {
         if (mCCRA != null) {
             mTxtBusinessName.setText(mCCRA.get("BusinessName").toString());
@@ -201,14 +190,6 @@ public class BuisnessInfoActivity extends AppCompatActivity {
         });
     }
 
-//    @Click(R.id.check_box_federal)
-//    void onFedralCheckBox() {
-//        if (mCheckBoxTax.isChecked()) {
-//            mTxtFedral.setVisibility(View.VISIBLE);
-//        } else {
-//            mTxtFedral.setVisibility(View.GONE);
-//        }
-//    }
 
     private void setListeners() {
         mSpinnerOwnershipType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

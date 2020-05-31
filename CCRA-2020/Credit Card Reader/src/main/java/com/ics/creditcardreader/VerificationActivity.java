@@ -64,8 +64,6 @@ public class VerificationActivity extends Activity {
     public ProgressDialog progressDialog;
     private String verificationCode;
     public String tocken_id;
-    private String serverURL = "https://api.marketingoptimizer.com/api/v1/";
-    private HttpClient httpClient = MySSLSocketFactory.getNewHttpClient(MySSLSocketFactory.getKeystore());
     private String objectId = "";
 
     public static boolean isNetworkAvailable(Context context) {
@@ -105,14 +103,13 @@ public class VerificationActivity extends Activity {
                     if (validateForm()) {
                         progressDialog = new ProgressDialog(VerificationActivity.this);
                         saveDataOnParse();
-                        IrsLeadsWebserviceImpl.saveLeads(
-                                getIntent().getStringExtra("full_name"),
-                                getIntent().getStringExtra("source"),
-                                getIntent().getStringExtra("company"),
-                                getIntent().getStringExtra("mobile_phone"),
-                                getIntent().getStringExtra("email_address"));
+//                        IrsLeadsWebserviceImpl.saveLeads(
+//                                getIntent().getStringExtra("full_name"),
+//                                getIntent().getStringExtra("source"),
+//                                getIntent().getStringExtra("company"),
+//                                getIntent().getStringExtra("mobile_phone"),
+//                                getIntent().getStringExtra("email_address"));
 
-                        // new APIOperation().execute(serverURL);
                     }
                 } else {
                     ShowNotification.showErrorDialog(VerificationActivity.this, "Internet is not available.");
@@ -160,26 +157,26 @@ public class VerificationActivity extends Activity {
         });
     }
 
-//    public void saveLeadThroughCloudCode() {
-//        try {
-//            HashMap<String, Object> params = new HashMap<String, Object>();
-//            params.put("objectId", objectId);
-//            params.put("app", "CCRA");
-//
-//            //below function will trigger saveLeadToPospros function from cloud code
-//            ParseCloud.callFunctionInBackground("saveLeadToPospros",
-//                    params,
-//                    new FunctionCallback<String>() {
-//                        public void done(String results, ParseException e) {
-//                            if (e == null) {
-//                                Log.e("results",results);
-//                            }
-//                        }
-//                    });
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void saveLeadThroughCloudCode() {
+        try {
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("objectId", objectId);
+            params.put("app", "CCRA");
+
+            //below function will trigger saveLeadToPospros function from cloud code
+            ParseCloud.callFunctionInBackground("saveLeadToPospros",
+                    params,
+                    new FunctionCallback<String>() {
+                        public void done(String results, ParseException e) {
+                            if (e == null) {
+                                Log.e("results", results);
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private void startNewActivity() {
@@ -243,121 +240,6 @@ public class VerificationActivity extends Activity {
         return errorNotFound;
     }
 
-    class APIOperation extends AsyncTask<String, Void, Void> {
-        private String Error = null;
-        JSONObject jsonParams = new JSONObject();
-        StringBuilder stringReader = new StringBuilder();
-        HttpPost httpPost;
-        String str;
-
-        protected void onPreExecute() {
-            progressDialog.setTitle("Saving");
-            progressDialog.setMessage("Please wait..");
-            progressDialog.show();
-            try {
-                if (getIntent().hasExtra("source")) {
-                    Object localObject = new JSONObject();
-                    ((JSONObject) localObject).put("id", "67516");//
-                    ((JSONObject) localObject).put("value", getIntent().getStringExtra("source"));
-                    ((JSONObject) localObject).put("name", "source");
-                    localObject = new JSONArray().put(localObject);
-                    this.jsonParams.put("fields", localObject);
-                    this.jsonParams.put("position", getIntent().getStringExtra("source"));
-                }
-                if (getIntent().hasExtra("company")) {
-                    this.jsonParams.put("company", getIntent().getStringExtra("company"));
-                }
-                if (getIntent().hasExtra("first_name")) {
-                    this.jsonParams.put("first_name", getIntent().getStringExtra("first_name"));
-                }
-                if (getIntent().hasExtra("last_name")) {
-                    this.jsonParams.put("last_name", getIntent().getStringExtra("last_name"));
-                }
-                if (getIntent().hasExtra("mobile_phone")) {
-                    this.jsonParams.put("mobile_phone", getIntent().getStringExtra("mobile_phone"));
-                }
-                if (getIntent().hasExtra("home_phone")) {
-                    this.jsonParams.put("home_phone", getIntent().getStringExtra("home_phone"));
-                }
-                if (getIntent().hasExtra("business_phone")) {
-                    this.jsonParams.put("business_phone", getIntent().getStringExtra("business_phone"));
-                }
-                if (getIntent().hasExtra("email_address")) {
-                    this.jsonParams.put("email_address", getIntent().getStringExtra("email_address"));
-                }
-            } catch (JSONException localJSONException) {
-                this.Error = localJSONException.getMessage();
-            }
-            Log.d("CCR - Verification", "Request: " + this.jsonParams.toString());
-        }
-
-        // Call after onPreExecute method
-        protected Void doInBackground(String... urls) {
-            try {
-                httpPost = new HttpPost(urls[0] + "contacts");
-                str = "Bearer " + getIntent().getStringExtra("Tocken_ID");
-                Log.e("TockenIdVA: ", str);
-
-                httpPost.addHeader("Authorization", str);
-                httpPost.setHeader("content-type", "application/json");
-                StringEntity se = new StringEntity(jsonParams.toString(), HTTP.UTF_8);
-                se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-                httpPost.setEntity(se);
-                HttpResponse response = httpClient.execute(httpPost);
-
-                // Get hold of the response entity
-                HttpEntity entity = response.getEntity();
-                if (entity != null) {
-                    // A Simple JSON Response Read
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()));
-                    String line = null;
-
-                    // Read Server Response
-                    while ((line = reader.readLine()) != null) {
-                        stringReader.append(line);
-                    }
-                    Log.d(TAG, "XML Response: " + stringReader.toString());
-                }
-            } catch (IOException ex) {
-                Error = ex.getMessage();
-            } catch (Exception ex) {
-                Error = ex.getMessage();
-            }
-            return null;
-        }
-
-        protected void onPostExecute(Void unused) {
-            //saveDataOnParse();
-            String leadID = "0";
-            if (Error != null) {
-            	/*new AlertDialog.Builder(VerificationActivity.this)
-            		.setTitle(R.string.app_name)
-	                .setMessage(Error)
-	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-	                	public void onClick(DialogInterface dialog, int which) {}
-	                }).show();*/
-                Log.d(TAG, "Output : " + Error);
-            } else {
-                JSONObject localObject = null;
-                try {
-                    localObject = new JSONObject(stringReader.toString());
-                    JSONObject localJSONObject = new JSONObject(localObject.getString("data"));
-                    Log.d("CCR - Verification", "Success: " + localObject.getString("success"));
-
-                    if (!localJSONObject.getString("id").equals("0")) {
-                    }
-                } catch (Exception ex) {
-                    Log.d("CCR - Verification", "Error : " + ex.getMessage());
-                }
-                Log.d("CCR - Verification", "Output : " + localObject);
-            }
-
-            //sendingDataToICSLeads();
-
-            //sendingDataToNewCRM();
-
-        }
-    }
 
     public void saveDataOnParse() {
         progressDialog.setMessage("Please wait..");
@@ -377,7 +259,7 @@ public class VerificationActivity extends Activity {
                     objectId = query.getObjectId();
                     Log.e("Data:", "Saved on Parse.");
                     sendEmail(true);
-//                    saveLeadThroughCloudCode();
+                    saveLeadThroughCloudCode();
                 } else {
                     Log.e("Err1:", e.toString());
                     sendEmail(false);
@@ -449,247 +331,6 @@ public class VerificationActivity extends Activity {
         } catch (Exception e) {
             Log.v("Err email1:", e.toString());
         }
-    }
-
-    public void sendingDataToNewCRM() {
-        class NewCRMAPIOperation extends AsyncTask<String, Void, Void> {
-            private String Error = null, apiResponce = "";
-            List<NameValuePair> paramlist = new ArrayList<NameValuePair>();
-            StringBuilder stringReader = new StringBuilder();
-
-            protected void onPreExecute() {
-                try {
-                    String phone = getIntent().getStringExtra("mobile_phone");
-                    phone = "(" + phone.substring(0, 3) + ") " + phone.substring(3, 6) + "-" + phone.substring(6, 10);
-                    String fullName = getIntent().getStringExtra("full_name");
-                    paramlist.add(new BasicNameValuePair("status", "New Lead"));
-                    paramlist.add(new BasicNameValuePair("list", getIntent().getStringExtra("source")));
-
-                    if (getIntent().hasExtra("full_name")) {
-                        paramlist.add(new BasicNameValuePair("ContactName", fullName));
-                    }
-                    if (getIntent().hasExtra("company")) {
-                        paramlist.add(new BasicNameValuePair("BusinessName", getIntent().getStringExtra("company")));
-                    }
-                    if (getIntent().hasExtra("email_address")) {
-                        paramlist.add(new BasicNameValuePair("Email", getIntent().getStringExtra("email_address")));
-                    }
-
-                    if (getIntent().hasExtra("mobile_phone")) {
-                        paramlist.add(new BasicNameValuePair("OfficePhone", phone));
-                    }
-                    if (getIntent().hasExtra("card_processing")) {
-                        paramlist.add(new BasicNameValuePair("AcceptCreditCards2", getIntent().getStringExtra("card_processing")));
-                    }
-                } catch (Exception ex) {
-                    this.Error = ex.getMessage();
-                }
-                Log.i("NewCrmPostRequest:", this.paramlist.toString());
-            }
-
-            // Call after onPreExecute method
-            protected Void doInBackground(String... urls) {
-                // Send data
-                try {
-                    // Defined URL  where to send data
-                    Log.i("NewCrmPostUrl:", urls[0]);
-
-                    HttpPost httpPost = new HttpPost(urls[0]);
-                    httpPost.setHeader(HTTP.CONTENT_TYPE,
-                            "application/x-www-form-urlencoded;charset=UTF-8");
-                    httpPost.setEntity(new UrlEncodedFormEntity(paramlist, "UTF-8"));
-
-                    HttpResponse response = httpClient.execute(httpPost);
-                    // Get hold of the response entity
-                    HttpEntity entity = response.getEntity();
-                    if (entity != null) {
-                        // A Simple JSON Response Read
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()));
-                        String line = null;
-                        // Read Server Response
-                        while ((line = reader.readLine()) != null) {
-                            stringReader.append(line);
-                        }
-                        apiResponce = stringReader.toString();
-
-                    }
-                } catch (IOException ex) {
-                    Error = ex.getMessage();
-                } catch (Exception ex) {
-                    Error = ex.getMessage();
-                }
-                return null;
-            }
-
-            protected void onPostExecute(Void unused) {
-                Log.i("NewCrmResponse: ", apiResponce);
-                if (Error != null) {
-                   /*new AlertDialog.Builder(VerificationActivity.this)
-                            .setTitle(R.string.app_name)
-                            .setMessage(Error)
-                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {}
-                            }).show();*/
-                    Log.i("Error : ", Error);
-                }
-                progressDialog.dismiss();
-                Intent i = new Intent(VerificationActivity.this, ThankYouActivity.class);
-                startActivity(i);
-            }
-        }
-        new NewCRMAPIOperation().execute("http://merchantaccountcrm.com/ext_lead_import.php");
-    }
-
-    public void sendingDataToICSLeads() {
-        class IcsLeadsAPIOperation extends AsyncTask<String, Void, Void> {
-            private String Error = null, apiResponce = "";
-            private StringReader xmlData = null;
-            JSONObject jsonParams = new JSONObject();
-            List<NameValuePair> paramlist = new ArrayList<NameValuePair>();
-            StringBuilder stringReader = new StringBuilder();
-            private String data = "";
-            private String crmdata = "";
-
-            protected void onPreExecute() {
-                try {
-                    String phone = getIntent().getStringExtra("mobile_phone");
-                    //phone = "("+phone.substring(0,3)+") "+phone.substring(3,6)+"-"+phone.substring(6,10);
-                    phone = phone.replace("-", "");
-                    String fullName = getIntent().getStringExtra("full_name");
-//                    String isProcessing = getIntent().getStringExtra("card_processing");
-//                    if (isProcessing.equals("Yes")) {
-//                        isProcessing = "True";
-//                    } else {
-//                        isProcessing = "False";
-//                    }
-
-                    try {
-                        // Set Request parameter
-                        data += "&" + URLEncoder.encode("source", "UTF-8") + "=" + getIntent().getStringExtra("source");
-                        data += "&" + URLEncoder.encode("originator", "UTF-8") + "=" + "1029";
-                        data += "&" + URLEncoder.encode("returnType", "UTF-8") + "=" + "xml";
-                        data += "&" + URLEncoder.encode("traceId", "UTF-8") + "=" + "1234567890";
-                        data += "&" + URLEncoder.encode("businessName", "UTF-8") + "=" + getIntent().getStringExtra("company");
-                        data += "&" + URLEncoder.encode("contactName", "UTF-8") + "=" + fullName;
-                        data += "&" + URLEncoder.encode("phone", "UTF-8") + "=" + phone;
-                        data += "&" + URLEncoder.encode("phoneAlt", "UTF-8") + "=" + phone;
-
-                        //data += "&" + URLEncoder.encode("currentlyProcessing", "UTF-8") + "=" + isProcessing;
-                        data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + getIntent().getStringExtra("email_address");
-
-                        Log.e("check", data);
-
-                    } catch (UnsupportedEncodingException e) {
-                        Log.e("check", e.getLocalizedMessage());
-                        e.printStackTrace();
-                    }
-                } catch (Exception ex) {
-                    Log.e("check", ex.getLocalizedMessage());
-                    this.Error = ex.getMessage();
-                }
-            }
-
-            // Call after onPreExecute method
-            protected Void doInBackground(String... urls) {
-                BufferedReader reader = null;
-                // Send data
-                try {
-                    // Defined URL  where to send data
-                    URL url = new URL(urls[0]);
-                    URLConnection conn = url.openConnection();
-                    conn.setDoOutput(true);
-                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                    wr.write(data);
-                    wr.flush();
-
-                    reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    StringBuilder sb = new StringBuilder();
-                    String line = null;
-
-                    // Read Server Response
-                    while ((line = reader.readLine()) != null) {
-                        sb.append(line);
-                    }
-                    Log.d(TAG, "XML Response: " + sb.toString());
-                    xmlData = new StringReader(sb.toString());
-                    apiResponce = sb.toString();
-                } catch (IOException ex) {
-                    Error = ex.getMessage();
-                } catch (Exception ex) {
-                    Error = ex.getMessage();
-                }
-
-                return null;
-            }
-
-            protected void onPostExecute(Void unused) {
-                Log.e("IcsLeadsResponse: ", apiResponce);
-                progressDialog.dismiss();
-                if (Error != null) {
-                   /* new AlertDialog.Builder(VerificationActivity.this)
-                            .setTitle(R.string.app_name)
-                            .setMessage(Error)
-                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {}
-                            }).show();*/
-                    Log.e("Error : ", Error);
-                }
-
-                startNewActivity();
-
-                //Intent i = new Intent(VerificationActivity.this, ThankYouActivity.class);
-                //startActivity(i);
-            }
-        }
-        new IcsLeadsAPIOperation().execute("https://www.icsleads.com/Api/AddLead/");
-    }
-
-    public void sendEmailOld() {
-        new AsyncTask<Void, Void, Void>() {
-            boolean isSuccess;
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                Log.i("sending Email:", "Start..");
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                if (isSuccess) {
-                    Log.i("sending Email:", "Completed..");
-                } else {
-                    Log.i("sending Email:", "Fail..");
-                }
-                progressDialog.dismiss();
-                Intent i = new Intent(VerificationActivity.this, ThankYouActivity.class);
-                startActivity(i);
-            }
-
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    String phone = getIntent().getStringExtra("mobile_phone");
-                    phone = "(" + phone.substring(0, 3) + ") " + phone.substring(3, 6) + "-" + phone.substring(6, 10);
-                    String fullName = getIntent().getStringExtra("full_name");
-                    new MailHelper().sendMail(
-                            "leads@merchantaccountsolutions.com",
-                            fullName,
-                            getIntent().getStringExtra("company"),
-                            getIntent().getStringExtra("email_address"),
-                            phone,
-                            getIntent().getStringExtra("card_processing"),
-                            getIntent().getStringExtra("source")
-                    );
-                    isSuccess = true;
-                } catch (Exception ex) {
-                    isSuccess = false;
-                }
-                return null;
-            }
-        }.execute();
-
     }
 
 }
