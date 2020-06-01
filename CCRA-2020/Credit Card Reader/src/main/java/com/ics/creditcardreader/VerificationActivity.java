@@ -178,28 +178,6 @@ public class VerificationActivity extends Activity {
         }
     }
 
-    public void saveLeadThroughCloudCodeTemp(String id) {
-        try {
-            HashMap<String, Object> params = new HashMap<String, Object>();
-            params.put("objectId", id);
-            params.put("app", "CCPA");
-
-            //below function will trigger saveLeadToPospros function from cloud code
-            ParseCloud.callFunctionInBackground("saveLeadToPospros",
-                    params,
-                    new FunctionCallback<String>() {
-                        public void done(String results, ParseException e) {
-                            if (e == null) {
-                                Log.e("results", results);
-                            }
-                        }
-                    });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
     private void startNewActivity() {
 
         Intent i = new Intent(VerificationActivity.this, ProcessingActivity.class);
@@ -266,49 +244,25 @@ public class VerificationActivity extends Activity {
         progressDialog.setMessage("Please wait..");
         progressDialog.show();
 
-
-        final ParseObject queryCCPA = new ParseObject("CCPA");
-        queryCCPA.put("Name", getIntent().getStringExtra("first_name"));
-        queryCCPA.put("LastName", getIntent().getStringExtra("last_name"));
-        queryCCPA.put("BusinessName", getIntent().getStringExtra("company"));
-        queryCCPA.put("Email", getIntent().getStringExtra("email_address"));
-        queryCCPA.put("Phone", getIntent().getStringExtra("mobile_phone"));
-        queryCCPA.put("source", getIntent().getStringExtra("source"));
-        queryCCPA.put("IPAddress", ApplicationClass.getMyApp().getLocalIpAddress());
-        queryCCPA.saveInBackground(new SaveCallback() {
+        final ParseObject query = new ParseObject("CCRA");
+        query.put("Name", getIntent().getStringExtra("first_name"));
+        query.put("LastName", getIntent().getStringExtra("last_name"));
+        query.put("BusinessName", getIntent().getStringExtra("company"));
+        query.put("Email", getIntent().getStringExtra("email_address"));
+        query.put("Phone", getIntent().getStringExtra("mobile_phone"));
+        query.put("source", getIntent().getStringExtra("source"));
+        query.put("IPAddress", ApplicationClass.getMyApp().getLocalIpAddress());
+        query.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
+                    objectId = query.getObjectId();
                     Log.e("Data:", "Saved on Parse.");
-                    saveLeadThroughCloudCodeTemp(queryCCPA.getObjectId());
-
-                    final ParseObject query = new ParseObject("CCRA");
-                    query.put("Name", getIntent().getStringExtra("first_name"));
-                    query.put("LastName", getIntent().getStringExtra("last_name"));
-                    query.put("BusinessName", getIntent().getStringExtra("company"));
-                    query.put("Email", getIntent().getStringExtra("email_address"));
-                    query.put("Phone", getIntent().getStringExtra("mobile_phone"));
-                    query.put("source", getIntent().getStringExtra("source"));
-                    query.put("IPAddress", ApplicationClass.getMyApp().getLocalIpAddress());
-                    query.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e == null) {
-                                objectId = query.getObjectId();
-                                Log.e("Data:", "Saved on Parse.");
-                                sendEmail(true);
-                                saveLeadThroughCloudCode();
-                            } else {
-                                Log.e("Err1:", e.toString());
-                                sendEmail(false);
-                            }
-
-                        }
-                    });
-
-
+                    sendEmail(true);
+                    saveLeadThroughCloudCode();
                 } else {
                     Log.e("Err1:", e.toString());
+                    sendEmail(false);
                 }
 
             }
