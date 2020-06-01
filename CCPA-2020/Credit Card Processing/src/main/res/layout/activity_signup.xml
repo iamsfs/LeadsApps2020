@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".SignUpActivity" >
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<TextView android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:text="@string/lbl_new_account"
+			android:textColor="#ffffff"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:layout_marginBottom="@dimen/activity_vertical_margin"
+			android:background="@color/mud"
+			android:textSize="30sp"/>
+
+		<TableLayout android:layout_width="match_parent" android:layout_height="0dp"
+			android:stretchColumns="*" android:shrinkColumns="*" android:layout_weight="1"
+			android:paddingLeft="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_vertical_margin">
+			<LinearLayout android:paddingTop="10dp" android:weightSum="2" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/activity_horizontal_margin">
+				<EditText android:id="@+id/sign_up_name"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="50dp"
+					android:layout_marginEnd="5dp"
+					android:singleLine="true"
+					android:inputType="textCapWords"
+					android:textColor="#898989"
+					android:hint="@string/lbl_sign_up_name"
+					android:imeOptions="actionNext"
+					android:gravity="center_vertical"
+					android:background="@drawable/edit_text_bg"
+					android:textSize="24sp" />
+
+				<EditText android:id="@+id/sign_up_last_name"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="50dp"
+					android:layout_marginStart="5dp"
+					android:singleLine="true"
+					android:inputType="textCapWords"
+					android:textColor="#898989"
+					android:hint="@string/lbl_sign_up_last_name"
+					android:imeOptions="actionNext"
+					android:gravity="center_vertical"
+					android:background="@drawable/edit_text_bg"
+					android:textSize="24sp" />
+
+
+			</LinearLayout>
+			<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/activity_horizontal_margin">
+				<EditText android:id="@+id/sign_up_bus_name"
+					android:layout_width="match_parent"
+					android:layout_height="50dp"
+					android:singleLine="true"
+					android:inputType="textCapWords"
+					android:textColor="#898989"
+					android:hint="@string/lbl_sign_up_buss_name"
+					android:gravity="center_vertical"
+					android:background="@drawable/edit_text_bg"
+					android:textSize="24sp" />
+			</TableRow>
+			<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/activity_horizontal_margin">
+				<EditText android:id="@+id/sign_up_email"
+					android:layout_width="match_parent"
+					android:layout_height="50dp"
+					android:singleLine="true"
+					android:inputType="textEmailAddress"
+					android:textColor="#898989"
+					android:hint="@string/lbl_sign_up_email"
+					android:gravity="center_vertical"
+					android:background="@drawable/edit_text_bg"
+					android:textSize="24sp" />
+			</TableRow>
+			<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/activity_horizontal_margin">
+				<EditText android:id="@+id/sign_up_phone"
+					android:layout_width="match_parent"
+					android:layout_height="50dp"
+					android:singleLine="true"
+					android:inputType="phone"
+					android:textColor="#898989"
+					android:layout_weight="1"
+					android:maxLength="12"
+					android:digits="0123456789-"
+					android:hint="@string/lbl_sign_up_phone"
+					android:gravity="center_vertical"
+					android:background="@drawable/edit_text_bg"
+					android:textSize="24sp" />
+			</TableRow>
+			<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/activity_horizontal_margin">
+				<EditText android:id="@+id/sign_up_password"
+					android:layout_width="match_parent"
+					android:layout_height="50dp"
+					android:singleLine="true"
+					android:inputType="textPassword"
+					android:textColor="#898989"
+					android:hint="@string/lbl_sign_up_password"
+					android:gravity="center_vertical"
+					android:background="@drawable/edit_text_bg"
+					android:textSize="24sp" />
+			</TableRow>
+			<TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+				<EditText android:id="@+id/sign_up_v_password"
+					android:layout_width="match_parent"
+					android:layout_height="50dp"
+					android:singleLine="true"
+					android:inputType="textPassword"
+					android:textColor="#898989"
+					android:hint="@string/lbl_sign_up_v_password"
+					android:gravity="center_vertical"
+					android:background="@drawable/edit_text_bg"
+					android:textSize="24sp" />
+			</TableRow>
+		</TableLayout>
+		<TextView android:id="@+id/action_next"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:text="@string/lbl_next"
+			android:textColor="#ffffff"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:layout_margin="@dimen/activity_vertical_margin"
+			android:background="@drawable/btn_bg"
+			android:textSize="30sp"/>
+		<TextView
+			android:id="@+id/action_call"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:layout_marginBottom="@dimen/activity_vertical_margin"
+			android:textColorLink="#0000ff"
+			android:text="@string/lbl_quick_setup"
+			android:textColor="#898989"
+			android:autoLink="phone"
+			android:textSize="20sp"/>
+	</LinearLayout>
+</ScrollView>

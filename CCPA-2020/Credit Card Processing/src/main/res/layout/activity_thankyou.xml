@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ThankYouActivity">
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/lbl_thank_you"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@color/mud"
+        android:textSize="30sp"/>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dip" android:layout_weight="1"
+        android:orientation="vertical" android:gravity="top|center"
+        android:layout_marginTop="@dimen/activity_horizontal_margin_s"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin">
+	    <TextView android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:text="@string/lbl_thank_you_msg"
+	        android:textColor="#898989"
+	        android:textAppearance="?android:textAppearanceLarge"/>
+	    <TextView android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:paddingTop="20dp"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:text="@string/lbl_or"
+	        android:textColor="#898989"
+	        android:textSize="24sp"/>
+	    <TextView android:id="@+id/call_now" android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+			android:paddingTop="@dimen/content_horizontal_margin"
+	        android:layout_gravity="center"
+	        android:gravity="center"
+	        android:textColorLink="#0000ff"
+	        android:text="@string/lbl_thank_you_footer"
+	        android:textColor="#0000ff"
+	        android:textSize="24sp"/>
+	</LinearLayout>
+	<TextView android:id="@+id/action_next"
+   		android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/lbl_continue_demo"
+        android:textColor="#ffffff"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/btn_bg"
+        android:textSize="30sp"/>
+</LinearLayout>

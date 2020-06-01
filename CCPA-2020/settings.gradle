@@ -1,0 +1,1 @@
+include ':Credit Card Processing', ':mail', ':activation', ':additionnal', ':javax.mail'
