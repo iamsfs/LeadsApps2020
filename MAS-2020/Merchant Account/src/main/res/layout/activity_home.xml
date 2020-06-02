@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffe2e2e2"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <FrameLayout
+            android:id="@+id/create_lead_img"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_gravity="center"
+            android:layout_weight="1.0">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:contentDescription="@string/lbl_create_lead_img"
+                android:src="@drawable/create_lead_img" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/lbl_new_sale"
+                android:textColor="#ff111111"
+                android:textSize="44.0sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="@string/lbl_touch_here"
+                android:textColor="#ffffffff"
+                android:textSize="30.0sp" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="100.0dip"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="90.0dip"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:id="@+id/action_get_paid"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/btn_selector"
+                android:text="@string/lbl_action_get_paid"
+                android:textColor="#ffffffff"
+                android:textSize="25.0sp" />
+
+            <Button
+                android:id="@+id/action_receipt"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/btn_selector"
+                android:drawableLeft="@drawable/grey_border"
+                android:text="@string/lbl_action_pricing"
+                android:textColor="#ffffffff"
+                android:textSize="25.0sp" />
+
+            <Button
+                android:id="@+id/action_activate"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/btn_selector"
+                android:drawableLeft="@drawable/grey_border"
+                android:text="@string/lbl_action_activate"
+                android:textColor="#ffffffff"
+                android:textSize="25.0sp" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

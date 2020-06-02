@@ -1,0 +1,1 @@
+include ':Merchant Account', ':mail', ':activation', ':additionnal', ':javax.mail'

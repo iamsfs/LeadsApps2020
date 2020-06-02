@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/progressBarDialog"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_centerInParent="true" />-->
+
+
+        <ScrollView
+            android:id="@+id/scrollViewDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/viewLineButton"
+            android:layout_below="@+id/viewLine"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtViewDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/black_de" />
+
+
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/scrollViewDialogPaySafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/viewLineButton"
+            android:layout_below="@+id/viewLine"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:text="@string/string_terms_pay_safe_one"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black_de" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:text="@string/string_terms_pay_safe_two"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black_de" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:text="@string/string_terms_pay_safe_three"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black_de" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:text="@string/string_terms_pay_safe_four"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black_de" />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+        <TextView
+            android:id="@+id/buttonDoneDialog"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:text="@string/string_done"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/blue" />
+
+
+        <TextView
+            android:id="@+id/txtViewHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_vertical_margin"
+            android:text="@string/string_terms_and_conditions_dialog_header"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/black_de"
+            android:textStyle="bold" />
+
+
+        <View
+            android:id="@+id/viewLineButton"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/buttonDoneDialog"
+            android:layout_marginBottom="17dp"
+            android:background="@color/txt_color" />
+
+
+        <View
+            android:id="@+id/viewLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txtViewHeader"
+            android:background="@color/txt_color" />
+
+        <!--        <WebView-->
+        <!--            android:id="@+id/webViewDialog"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_above="@+id/viewLineButton"-->
+        <!--            android:layout_below="@+id/viewLine"-->
+        <!--            android:visibility="gone" />-->
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
