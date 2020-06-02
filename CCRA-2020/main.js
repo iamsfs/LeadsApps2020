@@ -57,7 +57,7 @@ Parse.Cloud.define("sendMailgun", function (request, response) {
 Parse.Cloud.define("saveLeadToPospros", function (request, response) {
   var Pospros = Parse.Object.extend("Pospros");
   var posporsQuery = new Parse.Query(Pospros);
-  posporsQuery.equalTo("app", request.params.app);
+  posporsQuery.equalTo("slug", request.params.app);
   posporsQuery.first({
     success: function (result) {
       var result = JSON.parse(JSON.stringify(result));
