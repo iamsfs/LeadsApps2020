@@ -15,8 +15,8 @@ android {
         applicationId 'com.ics.creditcardprocessing'
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 50
-        versionName '1.0.50'
+        versionCode 51
+        versionName '2.3'
     }
     buildTypes {
         release {
