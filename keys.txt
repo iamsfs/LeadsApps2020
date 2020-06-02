@@ -1,0 +1,13 @@
+CCPA,CCSC,CCSW,CCT,FCR,MAS,MS ,POS , CCM,CCRA \
+\
+Key Alias = demoapp\
+Password = android\
+\
+2.	BLKA\
+Key Alias = android\
+Password = android\
+\
+3.	CCT \
+alias => codesign\
+Password => android\
+\
