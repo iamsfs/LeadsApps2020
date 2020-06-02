@@ -70,7 +70,7 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
 
           var results = JSON.parse(JSON.stringify(results));
           var name = results.Name + " " + results.LastName;
-          var source = results.source;
+          var source = result.app;
           var busninessName = results.BusinessName;
           var email = results.Email;
           var phone = results.Phone;
