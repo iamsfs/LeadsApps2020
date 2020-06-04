@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout android:orientation="vertical" android:id="@+id/tip_screen" android:background="@color/maroon" android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<TableLayout android:layout_gravity="top" android:padding="@dimen/activity_horizontal_margin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="*" android:shrinkColumns="*">
+			<TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:layout_gravity="left" android:id="@+id/action_cancel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:drawableLeft="@drawable/lbl_back" android:drawableRight="@drawable/spacer" />
+				<TextView android:textSize="24.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@+id/action_title" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/lbl_signature" />
+				<TextView android:layout_gravity="right" android:id="@+id/action_next" android:layout_width="fill_parent" android:layout_height="fill_parent" android:drawableLeft="@drawable/spacer" android:drawableRight="@drawable/lbl_go" />
+			</TableRow>
+		</TableLayout>
+		<LinearLayout android:orientation="horizontal" android:background="#ffe2e2e2" android:paddingLeft="@dimen/activity_vertical_margin" android:paddingTop="@dimen/activity_horizontal_margin" android:paddingRight="@dimen/activity_vertical_margin" android:paddingBottom="@dimen/activity_horizontal_margin" android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<TextView android:textSize="24.0sp" android:textColor="#ff4d4d4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lbl_total" />
+			<TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="#ff4d4d4d" android:id="@+id/total_sale_amt" android:paddingLeft="@dimen/activity_horizontal_margin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lbl_total_amt" style="@style/autoscroll" />
+		</LinearLayout>
+		<TableLayout android:background="#ffffffff" android:paddingLeft="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_vertical_margin" android:layout_width="fill_parent" android:layout_height="0.0dip" android:stretchColumns="*" android:shrinkColumns="*" android:layout_weight="1.0">
+			<TableRow android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:textSize="24.0sp" android:textColor="#ff4d4d4d" android:layout_gravity="center|right" android:id="@+id/sign_clear" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/lbl_clear" />
+			</TableRow>
+			<TableRow android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+				<com.pattrns.toycashregister.helper.GestureOverlayView
+                    android:gravity="center" android:id="@+id/tip_sign" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+			</TableRow>
+			<TableRow android:layout_width="fill_parent" android:layout_height="@dimen/activity_horizontal_margin">
+				<TextView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableTop="@drawable/line_dashed" />
+			</TableRow>
+		</TableLayout>
+		<LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:background="#ffe2e2e2" android:paddingLeft="@dimen/activity_vertical_margin" android:paddingTop="@dimen/activity_horizontal_margin" android:paddingRight="@dimen/activity_vertical_margin" android:paddingBottom="@dimen/activity_horizontal_margin" android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="@color/maroon" android:gravity="center|right" android:layout_gravity="center|right" android:id="@+id/add_tip" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/lbl_add_tip" />
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:orientation="vertical" android:id="@+id/tip_popup" android:background="@drawable/popup_bg_tran" android:padding="@dimen/content_horizontal_margin" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<LinearLayout android:orientation="vertical" android:background="@drawable/popup_bg" android:padding="@dimen/activity_horizontal_margin" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/content_horizontal_margin">
+			<TextView android:textSize="28.0sp" android:textColor="#ff6fcc5c" android:gravity="center|top" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/lbl_add_tip" android:drawableBottom="@drawable/line_white" />
+			<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="*" android:shrinkColumns="*" android:layout_weight="1.0">
+				<TableRow android:paddingTop="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_horizontal_margin" android:layout_width="fill_parent" android:layout_height="wrap_content">
+					<TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tip_5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/lbl_tip_5" />
+					<TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tip_10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lbl_tip_10" />
+					<TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tip_15" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lbl_tip_15" />
+					<TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tip_20" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lbl_tip_20" />
+					<TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tip_25" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lbl_tip_25" />
+					<TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tip_30" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lbl_tip_30" />
+				</TableRow>
+				<TableRow android:layout_width="fill_parent" android:layout_height="2.0dip">
+					<TextView android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_span="6" android:drawableTop="@drawable/line_white" />
+				</TableRow>
+				<TableRow android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_horizontal_margin_s" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_horizontal_margin_s" android:layout_width="fill_parent" android:layout_height="wrap_content">
+					<TextView android:textSize="24.0sp" android:textColor="#ffffffff" android:gravity="center|left" android:id="@+id/tip_popup_total" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_span="6" android:text="@string/lbl_total_amt" />
+				</TableRow>
+				<TableRow android:layout_width="fill_parent" android:layout_height="2.0dip">
+					<TextView android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_span="6" android:drawableTop="@drawable/line_white" />
+				</TableRow>
+				<TableRow android:padding="@dimen/activity_horizontal_margin" android:layout_width="fill_parent" android:layout_height="wrap_content">
+					<TextView android:textSize="24.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tip_cancel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_span="2" android:text="@string/lbl_tip_cancel" />
+					<TextView android:textSize="24.0sp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_span="2" android:text="" />
+					<TextView android:textSize="24.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/tip_confirm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_span="2" android:text="@string/lbl_tip_confirm" />
+				</TableRow>
+			</TableLayout>
+		</LinearLayout>
+	</LinearLayout>
+</FrameLayout>

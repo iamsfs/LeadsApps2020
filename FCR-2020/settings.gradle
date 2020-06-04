@@ -1,0 +1,1 @@
+include ':Free Cash Register', ':mail', ':activation', ':additionnal', ':javax.mail'
