@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- focused -->
+    <!-- pressed -->
+    <!-- default -->
+    <item android:state_focused="true" android:drawable="@drawable/ic_button_selector" />
+    <item android:state_pressed="true" android:drawable="@drawable/ic_button_selector" />
+    <item android:drawable="@drawable/ic_button_default" />
+</selector>

@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BA6D"
+    android:orientation="vertical"
+    tools:context=".ConfirmationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_weight="1"
+            android:contentDescription="@string/lbl_charge_success"
+            android:scaleType="fitCenter"
+            android:src="@drawable/confirm" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:text="@string/lbl_confirm_done"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/cust_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:text="@string/lbl_confirm_done_msg"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:autoLink="phone"
+            android:gravity="center"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:text="@string/lbl_confirm_done_footer"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#ffffff"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/action_next"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:background="@drawable/btn_bg"
+        android:gravity="center"
+        android:text="@string/lbl_next"
+        android:textColor="#ffffff"
+        android:textSize="36sp" />
+</LinearLayout>
