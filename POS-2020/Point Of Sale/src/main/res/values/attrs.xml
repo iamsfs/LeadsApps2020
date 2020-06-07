@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  
+  <attr name="theme" format="reference" />
+    <attr name="textAppearance" format="reference" />
+    <attr name="gestureStrokeWidth" format="float" />
+    <attr name="gestureColor" format="color" />
+    <attr name="uncertainGestureColor" format="color" />
+    <attr name="fadeOffset" format="integer" />
+    <attr name="fadeDuration" format="integer" />
+    <attr name="gestureStrokeType">
+        <enum name="single" value="0" />
+        <enum name="multiple" value="1" />
+    </attr>
+    
+    <attr name="gestureStrokeLengthThreshold" format="float" />
+    <attr name="gestureStrokeSquarenessThreshold" format="float" />
+    <attr name="gestureStrokeAngleThreshold" format="float" />
+    <attr name="eventsInterceptionEnabled" format="boolean" />
+    <attr name="fadeEnabled" format="boolean" />
+    <attr name="backupAgent" format="string" />
+    <attr name="allowBackup" format="boolean" />
+    <attr name="glEsVersion" format="integer" />
+    <attr name="queryAfterZeroResults" format="boolean" />
+    <attr name="dropDownHeight" format="dimension">
+        <enum name="fill_parent" value="-1" />
+        <enum name="wrap_content" value="-2" />
+    </attr>
+    
+    <attr name="orientation">
+        <enum name="horizontal" value="0" />
+        <enum name="vertical" value="1" />
+    </attr>
+    
+    <declare-styleable name="GestureOverlayView">
+         <attr name="gestureStrokeWidth" />
+         <attr name="gestureColor" />
+         <attr name="uncertainGestureColor" />
+         <attr name="fadeDuration" />
+         <attr name="fadeOffset" />
+         <attr name="gestureStrokeType" />
+         <attr name="gestureStrokeLengthThreshold" />
+         <attr name="gestureStrokeAngleThreshold" />
+         <attr name="gestureStrokeSquarenessThreshold" />
+         <attr name="eventsInterceptionEnabled" />
+         <attr name="fadeEnabled" />
+         <attr name="orientation" />
+     </declare-styleable>
+     
+    <attr name="gestureOverlayViewStyle" format="reference" />
+    
+</resources>

@@ -1,0 +1,1 @@
+include ':Point Of Sale', ':mail', ':activation', ':additionnal', ':javax.mail'

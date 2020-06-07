@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <TextView-->
+<!--        android:id="@+id/appbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+<!--        android:background="@color/green"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/string_buisness_info"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="30sp" />-->
+
+    <TableLayout
+        android:id="@+id/appbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/app_bar"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/action_title"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/lbl_business_info"
+                android:textAllCaps="true"
+                android:textColor="#4C4C4C"
+                android:textSize="36.0sp" />
+        </TableRow>
+    </TableLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/rlContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <EditText
+                    android:id="@+id/txtBusinessName"
+                    style="@style/edit_text_style"
+                    android:hint="@string/string_business_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="30"
+                    android:padding="10dp"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/txtStreetName"
+                    style="@style/edit_text_style"
+                    android:layout_below="@+id/txtBusinessName"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/string_street_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="30"
+                    android:padding="10dp"
+                    android:singleLine="true" />
+
+                <LinearLayout
+                    android:id="@+id/rl2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtStreetName"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/txtCity"
+                        style="@style/edit_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/string_city"
+                        android:inputType="textCapWords"
+                        android:maxLength="30"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+
+                    <EditText
+                        android:id="@+id/txtState"
+                        style="@style/edit_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/string_state"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="2"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textAllCaps="true" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rl2"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/txtZipCode"
+                        style="@style/edit_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:hint="@string/string_zip_code"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/txtPhoneNumber"
+                        style="@style/edit_text_style"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:digits="0123456789-"
+                        android:hint="@string/string_hint_phone_number"
+                        android:inputType="phone"
+                        android:maxLength="12"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/txtContent"
+                    style="@style/edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ln2"
+                    android:layout_marginTop="10dp"
+                    android:gravity="start"
+                    android:hint="@string/string_product_and_services_sold_ie_boutique_clothing_stationary_etc"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLength="30"
+                    android:minLines="4"
+                    android:padding="10dp"
+                    android:scrollbars="vertical" />
+
+
+                <LinearLayout
+                    android:id="@+id/ln3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtContent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:visibility="gone"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:textColor="@color/black_de"
+                        android:id="@+id/federal_label"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center_vertical"
+                        android:text="@string/string_do_you_have_a_federal_tax_id"
+                        android:textAppearance="?android:textAppearanceMedium" />
+
+                    <CheckBox
+                        android:id="@+id/check_box_federal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+
+                </LinearLayout>
+
+
+
+
+                <Spinner
+                    android:id="@+id/spinnerOwner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/ln3"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/spinner_background"
+                    android:padding="10dp"
+                    android:spinnerMode="dialog" />
+
+
+                <EditText
+                    android:id="@+id/txtFederal"
+                    style="@style/edit_text_style"
+                    android:layout_below="@+id/spinnerOwner"
+                    android:layout_marginTop="10dp"
+                    android:digits="0123456789-"
+                    android:hint="@string/string_federal_tax_id"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_below="@+id/txtFederal"
+                    android:id="@+id/action_next"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:background="@drawable/lbl_bg"
+                    android:gravity="center"
+                    android:text="@string/lbl_next"
+                    android:textAllCaps="true"
+                    android:textColor="#4C4C4C"
+                    android:textSize="36.0sp" />
+
+
+<!--                <Button-->
+<!--                    android:id="@+id/btnNext"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_below="@+id/spinnerOwner"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:background="@color/green"-->
+<!--                    android:text="@string/string_next"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="30sp" />-->
+
+
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>
