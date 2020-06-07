@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/home_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        android:padding="@dimen/_16sdp">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/lbl_create_lead_img"
+            android:src="@drawable/home_logo" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/sign_in"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:background="@drawable/home_btn_bg"
+                android:drawableRight="@drawable/btn_arrow"
+                android:gravity="center"
+                android:text="@string/lbl_sign_in"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/_28sdp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/sign_up"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:background="@drawable/home_btn_bg"
+                android:drawableRight="@drawable/btn_arrow"
+                android:gravity="center"
+                android:text="@string/lbl_sign_up"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/_28sdp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/demo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_3sdp"
+                android:background="@drawable/home_btn_bg"
+                android:gravity="center"
+                android:text="@string/lbl_demo"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/_24sdp" />
+
+            <TextView
+                android:id="@+id/pricing"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:background="@drawable/home_btn_bg"
+                android:gravity="center"
+                android:text="@string/lbl_pricing"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/_24sdp" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

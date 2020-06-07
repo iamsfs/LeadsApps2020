@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <TextView-->
+<!--        android:id="@+id/appbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+<!--        android:background="@color/green"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/string_account_info"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="30sp" />-->
+
+
+    <TableLayout
+        android:id="@+id/appbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/app_bar"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/action_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:drawableLeft="@drawable/lbl_back"
+                android:drawableRight="@drawable/spacer" />
+
+            <TextView
+                android:id="@+id/action_title"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/lbl_account_info"
+                android:textColor="#000000"
+                android:textSize="24.0sp" />
+
+            <TextView
+                android:id="@id/action_next"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:drawableLeft="@drawable/spacer"
+                android:drawableRight="@drawable/lbl_go" />
+        </TableRow>
+    </TableLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:textColor="#808080"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/string_how_do_you_sell_to_customers"
+                    android:textAppearance="?android:textAppearanceLarge" />
+
+                <Spinner
+                    android:id="@+id/spinnerSell"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/spinner_background"
+                    android:padding="10dp"
+                    android:spinnerMode="dialog"
+                    android:textSize="24sp" />
+
+
+                <TextView
+                    android:textColor="#808080"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:text="@string/string_average_sale_per_customer"
+                    android:textAppearance="?android:textAppearanceLarge" />
+
+
+                <EditText
+                    android:id="@+id/txtAverageSales"
+                    style="@style/edit_text_style"
+                    android:digits="0123456789.,$"
+                    android:hint="@string/dollar_placeholder"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:textColor="#808080"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:text="@string/string_estimated_mo_credit_card_sales"
+                    android:textAppearance="?android:textAppearanceLarge" />
+
+
+                <EditText
+                    android:id="@+id/txtMoSales"
+                    style="@style/edit_text_style"
+                    android:layout_marginTop="10dp"
+                    android:digits="0123456789.,$"
+                    android:hint="@string/dollar_placeholder"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:text="@string/string_where_should_we_deposit_funds"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="#808080" />
+
+                <EditText
+                    android:id="@+id/txtBankName"
+                    style="@style/edit_text_style"
+                    android:background="@drawable/edit_text_bg"
+                    android:hint="@string/string_bank_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="50"
+                    android:padding="10dp"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/txtBankRoutingNumber"
+                    style="@style/edit_text_style"
+                    android:hint="@string/string_bank_routing_number"
+                    android:inputType="number"
+                    android:maxLength="50"
+                    android:padding="10dp"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/txtBankAccountNumber"
+                    style="@style/edit_text_style"
+                    android:hint="@string/string_bank_account_number"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="50"
+                    android:padding="10dp"
+                    android:singleLine="true" />
+
+<!--                <Button-->
+<!--                    android:id="@+id/btnNext"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:background="@color/green"-->
+<!--                    android:text="@string/string_next"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="30sp" />-->
+
+
+            </LinearLayout>
+
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>

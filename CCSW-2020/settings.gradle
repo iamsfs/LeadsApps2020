@@ -1,0 +1,1 @@
+include ':Credit Card Swiper', ':mail', ':activation', ':additionnal', ':javax.mail'
