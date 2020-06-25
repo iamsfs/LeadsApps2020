@@ -97,6 +97,7 @@ public class ProcessingActivity extends Activity {
                 source = "CCRA";
                 card_processing = "No";
                 progressDialog = new ProgressDialog(ProcessingActivity.this);
+                progressDialog.setMessage("Please wait..");
 
                 updateDataOnParse();
 
@@ -113,7 +114,30 @@ public class ProcessingActivity extends Activity {
         query.put("Phone", getIntent().getStringExtra("mobile_phone"));
         query.put("Processing", card_processing);
         query.put("source", source);
+
         BuisnessInfoActivity.start(this, query, getIntent().getStringExtra("objectId"), (ParseObject) getIntent().getExtras().get("pricingObject"));
+    }
+
+
+    public void saveLeadThroughCloudCode() {
+        try {
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("objectId", getIntent().getStringExtra("objectId"));
+            params.put("app", "CCRA");
+
+            //below function will trigger saveLeadToPospros function from cloud code
+            ParseCloud.callFunctionInBackground("saveLeadToPospros",
+                    params,
+                    new FunctionCallback<String>() {
+                        public void done(String results, ParseException e) {
+                            if (e == null) {
+                                Log.e("results", results);
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateDataOnParse() {
@@ -123,9 +147,14 @@ public class ProcessingActivity extends Activity {
             public void done(ParseObject entity, ParseException e) {
                 if (e == null) {
                     entity.put("Processing", card_processing);
-                    entity.saveInBackground();
-                    progressDialog.dismiss();
-                    startNewActivity();
+                    entity.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            saveLeadThroughCloudCode();
+                            progressDialog.dismiss();
+                            startNewActivity();
+                        }
+                    });
                 } else {
                     Toast.makeText(ProcessingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }

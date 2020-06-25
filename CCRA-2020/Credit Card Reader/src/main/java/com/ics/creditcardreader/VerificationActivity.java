@@ -157,26 +157,26 @@ public class VerificationActivity extends Activity {
         });
     }
 
-    public void saveLeadThroughCloudCode() {
-        try {
-            HashMap<String, Object> params = new HashMap<String, Object>();
-            params.put("objectId", objectId);
-            params.put("app", "CCRA");
-
-            //below function will trigger saveLeadToPospros function from cloud code
-            ParseCloud.callFunctionInBackground("saveLeadToPospros",
-                    params,
-                    new FunctionCallback<String>() {
-                        public void done(String results, ParseException e) {
-                            if (e == null) {
-                                Log.e("results", results);
-                            }
-                        }
-                    });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void saveLeadThroughCloudCode() {
+//        try {
+//            HashMap<String, Object> params = new HashMap<String, Object>();
+//            params.put("objectId", objectId);
+//            params.put("app", "CCRA");
+//
+//            //below function will trigger saveLeadToPospros function from cloud code
+//            ParseCloud.callFunctionInBackground("saveLeadToPospros",
+//                    params,
+//                    new FunctionCallback<String>() {
+//                        public void done(String results, ParseException e) {
+//                            if (e == null) {
+//                                Log.e("results", results);
+//                            }
+//                        }
+//                    });
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void startNewActivity() {
 
@@ -259,7 +259,7 @@ public class VerificationActivity extends Activity {
                     objectId = query.getObjectId();
                     Log.e("Data:", "Saved on Parse.");
                     sendEmail(true);
-                    saveLeadThroughCloudCode();
+//                    saveLeadThroughCloudCode();
                 } else {
                     Log.e("Err1:", e.toString());
                     sendEmail(false);
