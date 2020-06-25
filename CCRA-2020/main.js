@@ -74,6 +74,7 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
           var busninessName = results.BusinessName;
           var email = results.Email;
           var phone = results.Phone;
+          var processing = results.Processing;
           var url = result.url;
           var utmSource = result.utmSource;
           var utmMedium = result.utmMedium;
@@ -85,6 +86,10 @@ Parse.Cloud.define("saveLeadToPospros", function (request, response) {
         
           response.success(url);
           var baseurl = "https://crm.securedmerchantapp.com/api/leads";
+
+          if(processing == "Yes"){
+            source = source + "Y";
+          }
 
           return Parse.Cloud.httpRequest({
             method: 'POST',
