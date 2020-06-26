@@ -61,4 +61,12 @@
         </TableRow>
     </TableLayout>
 
+    <TextView
+        android:textAppearance="?android:textAppearanceSmall"
+        android:id="@+id/text_view_version_number"
+        tools:text="Version Number 20.06.26"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

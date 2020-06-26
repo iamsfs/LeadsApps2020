@@ -15,8 +15,8 @@ android {
         applicationId 'com.ics.creditcardreader'
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 72
-        versionName '2.3'
+        versionCode 73
+        versionName '20.06.26'
     }
     buildTypes {
         release {
