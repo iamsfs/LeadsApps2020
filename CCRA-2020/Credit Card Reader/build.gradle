@@ -13,9 +13,9 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'com.ics.creditcardreader'
-        minSdkVersion 25
+        minSdkVersion 21
         targetSdkVersion 28
-        versionCode 74
+        versionCode 75
         versionName '20.06.26'
     }
     buildTypes {
