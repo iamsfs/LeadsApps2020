@@ -1,6 +1,7 @@
 package com.ics.creditcardreader.webservices.impl;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import com.parse.ParseObject;
 import org.androidannotations.annotations.EBean;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +49,14 @@ public class IrsLeadsWebserviceImpl implements IrsLeadsWebservice {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                //Toast.makeText(ApplicationClass.getMyApp().getApplicationContext(), "Data saved Successfully...", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent("test");
+                try {
+                    intent.putExtra("test", response.body().string());
+                    ApplicationClass.getMyApp().sendBroadcast(intent);
+                    Toast.makeText(ApplicationClass.getMyApp().getApplicationContext(), "Data saved Successfully...", Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
