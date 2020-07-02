@@ -13,9 +13,9 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'com.ics.freecashregister'
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
-        versionCode 116
+        versionCode 117
         versionName "2.3"
     }
     buildTypes {

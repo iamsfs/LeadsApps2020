@@ -13,9 +13,9 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'com.ics.merchantaccount'
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
-        versionCode 28
+        versionCode 29
         versionName '2.3'
     }
     buildTypes {

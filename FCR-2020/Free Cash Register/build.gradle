@@ -13,9 +13,9 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'com.pattrns.toycashregister'
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
-        versionCode 19
+        versionCode 20
         versionName "2.3"
     }
     buildTypes {
