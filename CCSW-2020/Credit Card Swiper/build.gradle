@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('../ccs.keystore')
+            storePassword 'android'
+            keyAlias = 'demoapp'
+            keyPassword 'android'
+        }
+    }
     useLibrary 'org.apache.http.legacy'
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -8,7 +16,7 @@ android {
         applicationId 'com.threeaspen.merchant.lite'
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 143
+        versionCode 144
         versionName "1.4.3"
     }
     buildTypes {
